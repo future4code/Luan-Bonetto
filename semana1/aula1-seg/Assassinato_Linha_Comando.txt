@@ -1,0 +1,54 @@
+===================== ASSASSINATO NA LINHA DE COMANDO =====================
+
+utilizei o comando cd (nome do diretório) para entrar nos diretórios e o comando cd .. para voltar um diretório.
+utilizei o comando ls para ver todos os arquivos da pasta atual.
+
+Primeiramente procurei pelas pistas na cena do crime utilizando o comando grep "PISTA" cena-do-crime
+
+em seguida resolvi procurar pela Annabel conforme a descrição do garçom interrogado, procurei utilizando o código   469  grep "Annabel" pessoas
+onde deu resultado de 4 pessoas com Annabel no nome, duas eram homens e já resolvi descartar.
+Procurei então pelas duas mulheres, fui para o diretório das ruas e coloquei o seguinte comando  head -n 40 Vila_Hart onde a ultima linha que apareceu
+era a de acordo com o endereço da primeira Annabel, que resultou na entrevista 47246024, e a segunda anabel usei o comando head -n 179 Vila_Buckingham
+onde também na última linha conforme o endereço deu o resultado para a entevista 699607.
+
+então fui para o diretório entrevistas e utilizando os seguintes comandos para abrir as entrevistas:  cat entrevista-47246024
+cat entrevista-699607
+A primeira não batia com as informações dadas pelo garçom.
+A segunda deu a pista de que havia visto um carro Honda azul, com placa que começa com "L337" e termina com "9".
+
+voltei então para o diretório mistérios e usei o seguinte comando   grep "L337" automoveis
+que listou todas as placas q iniciavam com L337
+fui observando placa por placa com o seguinte comando  grep -A 6 "Placa (digitos da placa)" automoveis
+e descartando todos que não eram honda azul.
+
+com isso tive os seguintes nomes:
+Erika Owens
+Aron Pilhofer
+Heather Billings
+Joe Germuska
+Jeremy Bowers
+Jacqui Maher
+
+Dei preferência para quem era homem conforme uma das pistas, e de altura próxima conforme também descrito nas pistas.
+ficando com
+Joe Germuska
+Jeremy Bowers
+
+Primeiro fui atrás do Joe Germuska
+pegando o endereço dele com o código  grep "Joe Germuska" pessoas
+fui no diretório das ruas e coloquei o código head -n 275 Rua_Plainfield
+que enviou para a entrevista em que o usei o seguinte código cat entrevista-29741223
+a entrevista me deu o resultado: Não deve ser considerado suspeito, pois não é associado ao SkyMiles e nunca foi membro do Museu de História do Bash.
+Então fui atrás de certificar se ele não era membro desses dois lugares, entrei no diretório associacoes e usei o seguinte código
+ cat AAA Delta_SkyMiles Biblioteca_da_Cidade Museu_da_História_do_Bash | grep "Joe Germuska"
+mostrando que realmente ele n fazia parte de todas as associações de acordo com o suspeito.
+
+Então fui atrás do Jeremy Bowers
+usei os mesmos códigos utilizados para ir atrás do Joe Germuska
+na entrevista resultou: A casa parece estar vazia. Não houve resposta quando batemos na porta.
+Após questionar os vizinhos, parece que o morador viajou recentemente.
+Será considerado um suspeito até que se prove o contrário, mas teríamos que eliminar outros suspeitos para ter certeza.
+Ele verifiquei se ele era membro dos quatro lugares e realmente era.
+
+Minha investigação parou aqui, ainda vou atras de eliminar outros suspeitos, até ter certeza de que ele realmente é o suspeito.
+
