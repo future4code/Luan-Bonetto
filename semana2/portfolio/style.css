@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap');
 
 *{
     margin: 0;
@@ -11,22 +12,346 @@ a{
     text-decoration: none;
 }
 
-/* CSS - Barra de Navegação */
-.center{
-    max-width: 100%;
-    margin: auto;
-    padding: 0 2%;
-}
-
-header{
-    padding: 9px;
-    text-align: center;
-    background: black;
-    position: fixed;
+/* --------------------------Header-------------------------- */
+#capa{
+    background-color: black;
     width: 100%;
 }
 
-header li{
-    display: inline-block;
-    margin: 10px 10px;
+#background-capa{
+    margin-top: 48px;
+    width: 100%;
+    height: 600px;
 }
+
+@keyframes anima-seta {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(0, 10px);
+    }
+}
+
+#seta1, #seta2, #seta3, #msg-seta{
+    width: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -60px;
+    animation: anima-seta 1s ease-in-out infinite;
+}
+#seta2{
+    width: 20px;
+    margin-top: -35px;
+}
+#seta3{
+    width: 10px;
+    margin-top: -23px;
+}
+#msg-seta{
+    display: block;
+    width: auto;
+    margin-top: -30px;
+    padding-bottom: 35px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0;
+}
+#msg-seta:hover{
+    opacity: 1;
+    color: #CEA9C1;
+    font-size: 13px;
+}
+
+/* --------------------------Barra de Navegação-------------------------- */
+.menu-flutuante{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 9px;
+    text-align: center;
+    background-color: #45397A;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+}
+
+.menu-flutuante li{
+    display: inline-block;
+    margin: 6px 6px;
+
+}
+
+.menu-flutuante ul{
+    list-style: none;
+}
+
+.menu-flutuante a{
+    transition: color .25s ease-out;
+    color: #FE523E;
+    padding-bottom: 15px;
+}
+
+ul:hover .menu-link:not(:hover){
+    color: #241c69;
+}
+
+.menu-link{
+    position: relative;
+}
+
+.menu-link::before, /* after representa antes/esquerda do ponto de partida e before depois/direita do ponto de partida */
+.menu-link::after{
+    content: ""; /*gera um conteudo em um elemento no caso o link*/
+    width: 0px;
+    height: 3px;
+    background-color: #FE523E;  
+    position: absolute;
+    bottom: 0;
+}
+  
+.menu-link::before{
+    left: 50%;
+    transform: translateX(-50%);
+}
+  
+.menu-link::after{
+    right: 50%;
+    transform: translateX(50%);
+}
+  
+.menu-link:hover::before,
+.menu-link:hover::after{
+    width: 100%;
+    transition-duration: 0.15s;
+}
+
+/* --------------------------Perfil-------------------------- */
+#perfil{
+    width: 100%;
+    margin-top: 28px;
+    background-image: linear-gradient(#251944 , #2B1139);
+    padding-bottom: 40px;
+    border-top: 0.5px solid #FEEC1C;
+    scroll-behavior: smooth;
+}
+
+#perfil h2{
+    font-size: 40px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    text-align: center;
+    margin-top: 40px;
+    color: #FD0454;
+}
+
+#perfil h3{
+    font-size: 30px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    text-align: center;
+    margin-top: 40px;
+    color: #FD0454;
+}
+
+#sobre{
+    width: 100%;
+    padding: 0 250px;
+}
+
+#foto-perfil{
+    display: block;
+    width: 30%;
+    margin: auto;
+}
+
+#sobre-texto{
+    display: block;
+    width: 70%;
+    color: #FE523E;
+    font-size: 16px;
+    margin: auto;
+    text-align: center;
+}
+
+#instituicoes{
+    margin-top: 40px;
+    font-size: 16px;
+    list-style-type: none;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid #FEEC1C;
+}
+
+#perfil h3{
+    display: inline;
+    font-size: 16px;
+    color: #FE523E;
+}
+
+.p-inline{
+    display: inline;
+}
+
+#titulo-habilidades{
+    margin-bottom: 40px;
+}
+
+.div-habilidades{
+    margin-bottom: 10px;
+}
+
+i{
+    font-size: 60px;
+}
+
+.div-icone{
+    display: inline-block;
+}
+
+/* --------------------------Projeto-------------------------- */
+#projetos{
+    background-image: linear-gradient( #2B1139 , #251944);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    scroll-behavior: smooth;
+}
+
+#projetos h2{
+    font-size: 40px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    text-align: center;
+    margin-top: 40px;
+    color: #41D3BD;
+}
+
+#grupo-box{
+    width: 100%;
+}
+
+.box{
+    display: inline-block;
+    width: 30%;
+    margin: 40px 0px 40px 30px;
+    padding: 10px;
+    border: 1px solid #41D3BD;
+    border-radius: 3px;
+}
+
+.box img{
+    width: 100%;
+}
+
+.box button{
+    width: 20%;
+    margin-left: 150px;
+    margin-top: 10px;
+    background-color: rgba(255, 2555, 255, 0);
+    border: 1px solid #41D3BD;
+    border-radius: 3px;
+    height: 35px;
+    color: #41D3BD;
+    font-size: 16px;
+}
+
+.box button:hover{
+    background-color: #41D3BD;
+    color: #45397A;
+}
+
+/* --------------------------Contato-------------------------- */
+#contato{
+    width: 100%;
+    padding-bottom: 40px;
+    background-image: linear-gradient( #251944 , #2B1139);
+    scroll-behavior: smooth;
+}
+
+#contato h2{
+    font-size: 40px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    text-align: center;
+    color: #41D3BD;
+    margin-bottom: 40px;
+}
+
+#contato form{
+    width: 50%;
+    margin: auto;
+    border: 1px solid #41D3BD;
+    padding: 40px 0px;
+}
+
+#div-form{
+    display: block;
+    margin: 0px 185px;
+}
+
+#contato label{
+    display: block;
+    font-size: 20px;
+    color: #41D3BD;
+
+}
+
+#contato input{
+    display: block;
+    padding-left: 10px;
+    width: 300px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 2555, 255, 0);
+    border: 1px solid #41D3BD;
+    border-radius: 3px;
+    height: 35px;
+    color: #41D3BD;
+}
+
+#contato button{
+    width: 20%;
+    margin-top: 10px;
+    margin-left: 238px;
+    background-color: rgba(255, 2555, 255, 0);
+    border: 1px solid #41D3BD;
+    border-radius: 3px;
+    height: 35px;
+    color: #41D3BD;
+    font-size: 16px;
+}
+
+#contato button:hover{
+    background-color: #41D3BD;
+    color: #45397A;
+}
+
+/* --------------------------Rodapé-------------------------- */
+#redes-sociais{
+    scroll-behavior: smooth;
+}
+
+footer{
+    background-color: #2B1139;
+    padding: 40px 0px;
+    border-top: 1px solid #FEEC1C;
+    text-align: center;
+    color: #FEEC1C;
+    font-family: 'Nanum Gothic Coding', monospace;
+}
+
+footer a{
+    color: #FEEC1C;
+}
+
+footer a:hover{
+    font-size: 30px;
+    color: #FE523E;
+}
+
+footer i{
+    font-size: 30px;
+    margin: 10px;
+}
+
+footer a:hover{
+    font-size: 30px;
+    color: #FE523E;
+}
+

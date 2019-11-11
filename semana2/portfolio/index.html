@@ -6,20 +6,124 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfólio - Luan Bonetto</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://kit.fontawesome.com/437bfba32e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <header>
-        <div class="center">
-            <nav>
-                <ul>
-                    <li><a href=""> teste1 </a></li>
-                    <li><a href=""> teste2 </a></li>
-                    <li><a href=""> teste3 </a></li>
-                </ul>
-            </nav>
-        </div>
+    <header id="capa">
+        <img id="background-capa" src="imagens/background.png" alt="background">
+        <a href="#perfil">
+        <img id="seta1" src="imagens/arrow.png">
+        <img id="seta2" src="imagens/arrow.png">
+        <img id="seta3" src="imagens/arrow.png">
+        <p id="msg-seta">scroll down</p>
+        </a>
     </header>
+
+    <section class="menu-flutuante">
+        <nav>
+            <ul>
+                <li><a class="menu-link" href="#perfil"> Sobre </a></li>
+                <li><a class="menu-link" href="#projetos"> Projetos </a></li>
+                <li><a class="menu-link" href="#contato"> Contato </a></li>
+                <li><a class="menu-link" href="#redes-sociais"> Redes Sociais </a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <section id="perfil">
+        <h2>Sobre Luan</h2>
+        <div id="sobre">
+            <img id="foto-perfil" src="imagens/foto-perfil.png" alt="foto-perfil">
+            <div id="sobre-texto">
+                <p>Apaixonado pela Tecnologia da Informação desde pequeno, hoje formado no curso Técnico em Redes de Computadores
+                    e procurando me inserir na área de desenvolvimento web.
+                </p>
+                <ul id="instituicoes">
+                    <li>
+                        ▷ Redes de Computadores - E.E.E.M. Professor Fernando Duarte Rabelo
+                    </li>
+                    <li>
+                        ▷ Gestão Da Tecnologia da Informação (incompleto) - PUC Campinas
+                    </li>
+                    <li>
+                        ▷ Desenvolvimento Web Full Stack - Future4
+                    </li>
+                </ul>
+
+                <h2 id="titulo-habilidades">Habilidades</h2>
+                <div class="div-habilidades">
+                    <h3>Proatividade:</h3>
+                    <p class="p-inline">Ajo antecipadamente, evitando ou resolvendo situações e problemas futuros.</p>
+                </div>
+                <div class="div-habilidades">
+                    <h3>Comunicação:</h3>
+                    <p class="p-inline">Valorizo a comunicação em equipe, acredito que seja uma habilidade importante para tornar o ambiente mais produtivo.</p>
+                </div>
+                <div class="div-habilidades">
+                    <h3>Autodidata:</h3>
+                    <p class="p-inline">Ser autodidata na TI é quase que obrigação, pois tudo está em constante evolução. O que é uma coisa hoje pode ser outra amanhã.</p>
+                </div>
+                <div class="div-habilidades">
+                    <h3>Conhecimento em</h3>
+                    <div>
+                        <div class="div-icone">
+                            <i class="fab fa-html5"></i>
+                            <p>HTML5</p>
+                        </div>
+                        <div class="div-icone">
+                            <i class="fab fa-css3-alt"></i>
+                            <p>CSS3</p>
+                        </div>
+                        <div class="div-icone">
+                            <i class="fab fa-js"></i>
+                            <p>Javascript</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <section id="projetos">
+        <h2>Projetos</h2>
+        <div id="grupo-box">
+            <div class="box">
+                <img src="imagens/projeto1.jpg" alt="projeto1">
+                <button>abrir</button>
+            </div>
+            <div class="box">
+                <img src="imagens/projeto2.jpg" alt="projeto2">
+                <button>abrir</button>
+            </div>
+            <div class="box">
+                <img src="imagens/projeto3.jpg" alt="projeto3">
+                <button>abrir</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <form>
+            <h2>Contato</h2>
+            <div id="div-form">
+                <label for="nome">nome</labe>
+                <input type="text" name="nome" id="nome" placeholder="Digite seu nome">   
+                <label for="email">Email</labe>
+                <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
+                <label for="mensagem">Texto</labe>
+                <input type="text" name="mensagem" id="mensagem" placeholder="Coloque sua mensagem aqui">
+                <button>Enviar</button>
+            </div>            
+        </form>
+    </section>
+
+    <footer id="redes-sociais">
+        <h2>Redes Sociais</h2>
+        <a href="https://github.com/LuanBonetto"> <i class="fab fa-github"></i> </a>
+        <a href="https://www.linkedin.com/in/luan-bonetto-6a63a315b/"><i class="fab fa-linkedin-in"></i></a>
+    </footer>
 
 </body>
 </html>
