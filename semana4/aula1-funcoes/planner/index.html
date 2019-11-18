@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Planner</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <form>
+        <label for="tarefa">Nova Tarefa:</label>
+        <input type="text" name="tarefa" id="tarefa">
+        <input list="browsers" name="browser" id="dia-semana">
+        <datalist id="browsers">
+            <option value="Segunda">
+            <option value="Terça">
+            <option value="Quarta">
+            <option value="Quinta">
+            <option value="Sexta">
+            <option value="Sabado">
+            <option value="Domingo">
+        </datalist>
+        <button type="button" onclick="addTarefa()">Criar Tarefa!</button>
+    </form>
+    
+    <section class="container">
+        <div id="segunda" class="dia">
+            <h1>Segunda</h1>
+        </div>
+
+        <div id="terca" class="dia">
+            <h1>Terça</h1>
+        </div>
+
+        <div id="quarta" class="dia">
+            <h1>Quarta</h1>
+        </div>
+
+        <div id="quinta" class="dia">
+            <h1>Quinta</h1>
+        </div>
+
+        <div id="sexta" class="dia">
+            <h1>Sexta</h1>
+        </div>
+
+        <div id="sabado" class="dia">
+            <h1>Sabado</h1>
+        </div>
+        
+        <div id="domingo" class="dia">
+            <h1>Domingo</h1>
+        </div>
+    </section>
+</body>
+</html>
