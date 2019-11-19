@@ -1,0 +1,16 @@
+.container{
+    width: 100%;
+    display: flex;
+    margin-top: 5px;
+}
+
+.dia{
+    width: 14.2857142857%;
+    text-align: center;
+    border: 1px solid black;
+    height: 600px;
+}
+
+.dia h1{
+    border-bottom: 1px solid black;
+}
