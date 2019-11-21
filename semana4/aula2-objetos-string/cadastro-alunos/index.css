@@ -4,6 +4,12 @@
     width: 100%;
 }
 
+#caixa-todo-conteudo{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
 .caixa-inscritos{
     width: 15%;
     border: 1px solid red;
