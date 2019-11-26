@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: orange;
+    display: flex;
+    justify-content: space-between;
+}
+
+header > h1{
+    font-size: 150%;
+    margin: 20px;
+}
+
+.campo-busca{
+    margin: 20px;
+}
+
+
+#main-container{
+    display: flex;
+}
+
+#menu{
+    width: 20%;
+}
+
+#li-biblioteca{
+    border-top: 1px solid gray;
+}
+
+li{
+    padding: 10px 0 10px 20px;
+}
+
+#videos{
+    width:80%;
+    padding-bottom: 50px;
+    border-left: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item-video{
+    border: 1px solid green;
+    margin-top: 20px;
+}
+
+.item-video > h2{
+    margin: 5px;
+}
+
+footer{
+    background-color: gray;
+    color: white;
+    margin-top: 10px;
+    padding: 15px;
+}
