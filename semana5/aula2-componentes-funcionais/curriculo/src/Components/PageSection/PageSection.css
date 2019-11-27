@@ -1,0 +1,14 @@
+#Container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.titulo{
+    width: 100%;
+    text-align: center;
+}
+
+.Imagem-SmallCard{
+    width: 10%;
+}

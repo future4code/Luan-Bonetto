@@ -1,0 +1,25 @@
+#container-BigCard{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    width: 100%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+h2{
+    width: 100%;
+    font-size: 100%;
+    margin: 20px 0 0 27% ;
+}
+
+p{
+    width: 70%;
+}
+
+.Imagem-BigCard{
+    width: 20%;
+    margin: 0 20px 20px 0;
+    border-radius: 50%;
+}
