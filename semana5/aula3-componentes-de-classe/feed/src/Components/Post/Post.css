@@ -1,0 +1,22 @@
+.container-post{
+    display: flex;
+    border: 1px solid grey;
+    margin: 5px 38% 20px 38%;
+    flex-wrap: wrap;
+}
+
+.usuario-post{
+    font-size: 16px;
+    width: 80%;
+    padding-top: 5px;
+}
+
+.usuario-perfil{
+    width: 15%;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.imagem-post{
+    width: 100%;
+}
