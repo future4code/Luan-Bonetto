@@ -1,0 +1,22 @@
+#container{
+    display: flex;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    width: 33.33%;
+    border: 1px solid red;
+    margin: 5px;
+    padding: 5px;
+}
+
+.item{
+    margin-bottom: 5px;
+}
+
+.div-lista{
+    border: 1px solid red;
+    margin: 5px;
+    padding: 5px;
+}
