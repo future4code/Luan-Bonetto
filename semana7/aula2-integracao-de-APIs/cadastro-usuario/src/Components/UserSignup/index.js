@@ -1,28 +1,63 @@
-import React from 'react'
+import React, { Component } from "react";
+import axios from "axios";
 
-class UserSignup extends React.Component {
-    constructor(props){
-        super(props)
+const baseURL = "https://us-central1-future4-users.cloudfunctions.net/api";
 
-        this.state = {
-            name: "",
-            email: ""
-        }
-    }
+class UserSignup extends Component {
+  constructor(props) {
+    super(props);
 
-    render() {
+    this.state = {
+      name: "",
+      email: ""
+    };
+  }
 
-        return(
-            <div>
-                <label>Nome:</label>
-                <input value={this.state.name} type="text"/>
-                <br/>
-                <label>E-mail:</label>
-                <input value={this.state.email} type="email"/>
-                <button>Salvar</button>
-            </div>
-        )
-    }
+  handleNameChange = event => {
+    this.setState({ name: event.target.value });
+  };
+
+  handleEmailChange = event => {
+    this.setState({ email: event.target.value });
+  };
+
+  handleCreateUser = async () => {
+    const userToBeCreated = {
+      name: this.state.name,
+      email: this.state.email
+    };
+
+    const axiosConfig = {
+      headers: {
+        "api-token": "luanbonetto"
+      }
+    };
+
+    await axios.post(
+      `${baseURL}/users/createUser`,
+      userToBeCreated,
+      axiosConfig
+    );
+    this.setState({ name: "", email: "" });
+  };
+
+  render() {
+    return (
+      <div>
+        <input
+          onChange={this.handleNameChange}
+          placeholder="Nome"
+          value={this.state.name}
+        />
+        <input
+          onChange={this.handleEmailChange}
+          placeholder="E-mail"
+          value={this.state.email}
+        />
+        <button onClick={this.handleCreateUser}>Salvar</button>
+      </div>
+    );
+  }
 }
 
-export default UserSignup
+export default UserSignup;
