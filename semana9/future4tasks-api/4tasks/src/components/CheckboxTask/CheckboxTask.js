@@ -2,6 +2,8 @@ import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import style from 'styled-components'
+import { connect } from 'react-redux';
+import { checkTask } from '../../actions/task'
 
 const Container = style.div`
     width: 100%;
@@ -21,13 +23,17 @@ class CheckboxTask extends React.Component {
         super(props)
         this.state = {}
     }
-    
+
+    onCheckTask = () => {
+        this.props.checkTask(this.props.task.id)
+    }
+     
     render(){
     return(
         <Container>
             <FormControlLabel
                 control={
-                <Checkbox checked={this.props.task.done} />
+                <Checkbox checked={this.props.task.done} onClick={this.onCheckTask} />
                 }
                 label={this.props.task.text}
             />
@@ -36,4 +42,8 @@ class CheckboxTask extends React.Component {
 }
 }
 
-export default CheckboxTask
+const mapDispatchToProps = (dispatch) => ({
+    checkTask: (taskId) => dispatch(checkTask(taskId))
+})
+
+export default connect(null, mapDispatchToProps)(CheckboxTask)

@@ -9,24 +9,6 @@ const Main = style.div`
     flex-wrap: wrap;
 `
 
-const tasks = [
-    {
-        id: 1,
-        done: false,
-        text: "teste"
-    },
-    {
-        id: 2,
-        done: true,
-        text: "teste1"
-    },
-    {
-        id: 3,
-        done: true,
-        text: "teste1"
-    }
-]
-
 class MainContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -39,7 +21,7 @@ class MainContainer extends React.Component {
         return(
             <Main>
                 <InputTask />
-                <CheckboxTaskList CheckboxTaskList={tasks}/>
+                <CheckboxTaskList />
             </Main>
         )
 }
