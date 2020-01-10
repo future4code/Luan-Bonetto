@@ -6,6 +6,7 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       <div>
+        <img src={this.props.currentSelectedProfile.photo} />
       </div>
     )
   }
@@ -16,6 +17,7 @@ ProfileScreen.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
+  currentSelectedProfile: state.profiles.currentSelectedProfile
 })
 
 const mapDispatchToProps = (dispatch) => ({
