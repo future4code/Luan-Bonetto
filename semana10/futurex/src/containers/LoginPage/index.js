@@ -22,7 +22,7 @@ class LoginPage extends Component {
     this.state = {
       email: "",
       password: "",
-      permission: localStorage.getItem('success'),
+      isLoggedIn: false,
     };
   }
 
@@ -32,15 +32,20 @@ class LoginPage extends Component {
     });
   };
 
-  handleLoginButton = () => {
-
+  handleLoginButton = async() => {
     const { email, password } = this.state
 
-    this.props.login(email, password)
+    await this.props.login(email, password)
+
+    if(localStorage.getItem('success')){
+      this.setState({isLoggedIn: true});
+    }
+    
   }
 
   render() {
     const { email, password } = this.state;
+    const isLoggedIn = this.state.isLoggedIn;
 
     return (
       <div>
@@ -59,7 +64,11 @@ class LoginPage extends Component {
           label="Password"
           value={password}
         />
-        <Button onClick={this.handleLoginButton || this.state.permission ? (this.props.goToAdminPage) : (console.log("sem permissão"))}>Login</Button>
+        {isLoggedIn ? (
+          <Button onClick={this.props.goToAdminPage} >Ir Para o Painel</Button>
+        ) : (
+          <Button onClick={this.handleLoginButton} >Logar</Button>
+        )}
       </LoginWrapper>
       </div>
     );

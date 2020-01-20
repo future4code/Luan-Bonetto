@@ -18,6 +18,27 @@ export const getTrips = () => async (dispatch) => {
 
 export const applyToTrip = ({id, name, age, applicationText, profession, country}) => async (dispatch) => {
     const tripId = id
-    await axios.post(`${baseUrl}trips/${tripId}/apply`, { name, age, applicationText, profession, country })
+
+    try{
+        await axios.post(`${baseUrl}trips/${tripId}/apply`, { name, age, applicationText, profession, country })
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const createTrip = ({name, planet, date, description, durationInDays}) => async (dispatch) => {
+    
+    const config = {
+        headers: {
+            'auth': window.localStorage.getItem("token")
+        }
+    }
+
+    try{
+        await axios.post(`${baseUrl}trips`, {name, planet, date, description, durationInDays}, config)
+    }catch(error){
+        console.log(error)
+        window.alert("Falha ao criar viagem")
+    }
 }
 
