@@ -4,7 +4,8 @@ import { push } from "connected-react-router";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
-import { routes } from '../Router/index'
+import { routes } from '../Router/index';
+import { login } from "../../actions/login"
 
 const LoginWrapper = styled.form`
   width: 100%;
@@ -20,7 +21,8 @@ class LoginPage extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      permission: localStorage.getItem('success'),
     };
   }
 
@@ -29,6 +31,13 @@ class LoginPage extends Component {
       [event.target.name]: event.target.value
     });
   };
+
+  handleLoginButton = () => {
+
+    const { email, password } = this.state
+
+    this.props.login(email, password)
+  }
 
   render() {
     const { email, password } = this.state;
@@ -50,16 +59,17 @@ class LoginPage extends Component {
           label="Password"
           value={password}
         />
-        <Button onClick={this.props.goToAdminPage}>Login</Button>
+        <Button onClick={this.handleLoginButton || this.state.permission ? (this.props.goToAdminPage) : (console.log("sem permissão"))}>Login</Button>
       </LoginWrapper>
-      <button onClick={this.props.goToAdminPage}>Form Viagem1</button>
       </div>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-      goToAdminPage: () => dispatch(push(routes.adminPage))
+  login: (email, password) => dispatch(login(email, password)),
+  goToAdminPage: () => dispatch(push(routes.adminPage))
 })
 
 export default connect(null, mapDispatchToProps) (LoginPage)
+//this.props.goToAdminPage

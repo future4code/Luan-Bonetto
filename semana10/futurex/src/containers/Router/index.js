@@ -31,7 +31,7 @@ function Router(props) {
         <Route path={routes.adminPage} component={AdminPage} exact />
         <Route path={routes.tripsList} component={TripsListPage} exact />
         <Route path={routes.createTrip} component={CreateTrip} exact />
-        <Route path={routes.tripsDetails} component={tripsDetails} />
+        <Route path={routes.tripsDetails} component={tripsDetails} exact />
       </Switch>
     </ConnectedRouter>
   );

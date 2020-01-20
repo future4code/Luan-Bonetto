@@ -14,3 +14,10 @@ export const getTrips = () => async (dispatch) => {
 
     dispatch(setTrips(response.data.trips))
 }
+
+
+export const applyToTrip = ({id, name, age, applicationText, profession, country}) => async (dispatch) => {
+    const tripId = id
+    await axios.post(`${baseUrl}trips/${tripId}/apply`, { name, age, applicationText, profession, country })
+}
+
