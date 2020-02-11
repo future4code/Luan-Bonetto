@@ -1,0 +1,11 @@
+{
+  "name": "luan-exercicios",
+  "version": "1.0.0",
+  "description": "exercicios da aula 1 semana 14",
+  "main": "exercicio1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luan Bonetto",
+  "license": "ISC"
+}
