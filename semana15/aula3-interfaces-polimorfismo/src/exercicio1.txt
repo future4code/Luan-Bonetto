@@ -1,0 +1,5 @@
+Client é uma interface;
+Place é uma classe abstrata;
+Commerce é uma classe filha da classe Place;
+Industry é uma classe filha da classe Place;
+Residence é uma classe filha da classe Place;
