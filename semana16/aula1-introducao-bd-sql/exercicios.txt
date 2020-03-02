@@ -1,0 +1,51 @@
+1) Cinema - Atores
+
+    a)  SELECT first_name, last_name FROM actors
+        WHERE last_name LIKE "%a%";
+
+    b)  SELECT last_name FROM actors
+        WHERE first_name LIKE "DAN" OR first_name LIKE "JULIA";
+    
+    c)  SELECT first_name, last_name FROM actors
+        WHERE first_name LIKE "%angelina%" OR first_name LIKE "%b%"
+    
+    d)  CREATE TABLE Actors(
+            id smallint unsigned NOT NULL DEFAULT 0,
+            first_name varchar(45) NOT NULL,
+            last_name varchar(45) NOT NULL
+        );
+
+        INSERT INTO Actors (id, first_name, last_name)
+        values (1, "Luan", "Bonetto");
+
+
+2) Cinema - Filmes
+
+    a)  SELECT title, description FROM films
+        WHERE length > 120;
+
+    b)  SELECT description, release_year, rating FROM films
+        WHERE description LIKE "%Documentary%";
+    
+    c)  SELECT title, release_year, special_features FROM films
+        WHERE rating LIKE "%NC-17" AND title LIKE "a%";
+
+    d)  SELECT * FROM films
+        WHERE special_features LIKE "%trailers%" AND rating NOT LIKE "%NC-17%" AND rating NOT LIKE "%R%"  AND title LIKE "%d%";
+    
+    e) CREATE TABLE Films(
+        film_id INT(10) UNSIGNED NOT NULL DEFAULT 0,
+        title VARCHAR(128) NOT NULL,
+        description VARCHAR(255),
+        release_year YEAR(4),
+        length INT(11),
+        rating ENUM('G', 'PG', 'PG-13', 'R', 'NC-17') DEFAULT 'G',
+        special_features set('Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes')
+        );
+
+        INSERT INTO Films (film_id, title, description, release_year)
+        VALUES (1, "Lockdown", "Lockdown is a television series appearing on the National Geographic Channel.", 2006),
+        (2, "El Pepe, A Supreme Life", "l Pepe, una vida suprema is a documentary on the life of Uruguayan politician and former guerrilla fighter José Mujica", 2019),
+        (3, "The Watcher", "FBI agent Joel Campbell, burnt-out and shell-shocked after years spent chasing serial killers, flees L.A. to begin a new life for himself in Chicago.", 2000),
+        (4, "Slice of Paradise", "", 2017),
+        (5, "Born to Be Free", "Casting a light on the mistreatment of sea mammals, this documentary follows the plight of 18 Beluga whales kept in captivity for years.", 2017);
