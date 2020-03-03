@@ -1,0 +1,63 @@
+1) Cidade
+    1)  SELECT * FROM city
+        ORDER BY Population DESC
+        LIMIT 5;
+    
+    2)  SELECT AVG(Population), District FROM city
+        GROUP BY District;
+
+    3)  SELECT COUNT(*), District FROM city
+        GROUP BY District;
+    
+    4)  SELECT COUNT(CountryCode), CountryCode from city
+        GROUP BY CountryCode
+        ORDER BY COUNT(CountryCode) DESC
+        LIMIT 10;
+
+2) Países
+    1)  SELECT Name, Population FROM country
+        WHERE Population > 100000 LIMIT 1000;
+
+    2)  SELECT COUNT(*) FROM country
+        WHERE Population > 5000000;
+
+    3)  SELECT SUM(Population) AS "Soma de população" FROM country
+        WHERE Continent LIKE "Asia";
+
+    4)  SELECT COUNT(*) FROM country
+        WHERE GovernmentForm LIKE "%Republic%" OR GovernmentForm LIKE "%Monarchy%";
+
+    5)  SELECT COUNT(GovernmentForm), GovernmentForm FROM country
+        GROUP BY GovernmentForm
+        ORDER BY COUNT(GovernmentForm) DESC 
+        LIMIT 1;
+
+    6)  SELECT AVG(Population), Continent FROM country
+        GROUP BY Continent;
+
+    7)  SELECT Name, IndepYear from country
+        ORDER BY IndepYear DESC
+        LIMIT 10;
+
+    8)  SELECT AVG(LifeExpectancy), LOWER(Continent) from country
+        GROUP BY Continent;
+
+    9)  SELECT Continent from country
+        GROUP BY Continent
+        ORDER BY SUM(SurfaceArea) DESC
+        LIMIT 3;
+
+
+ESCRITA)
+    1)  ALTER TABLE Films
+        ADD watched BOOLEAN NOT NULL DEFAULT FALSE;
+
+    2)  UPDATE Films
+        SET watched = true
+        WHERE rating = "G" OR rating = "PG";
+
+    3)  ALTER TABLE Films
+        ADD lucky_number INT NOT NULL DEFAULT 0;
+    
+    4)  UPDATE Films
+        SET lucky_number = FLOOR(RAND()*(1000)+1);
