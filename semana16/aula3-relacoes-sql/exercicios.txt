@@ -1,0 +1,101 @@
+1) 
+    CREATE TABLE autores(
+        id INT NOT NULL,
+        primeiro_nome varchar(255) NOT NULL,
+        ultimo_nome varchar(255) NOT NULL,
+        nacionalidade varchar(50) NOT NULL,
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE editoras(
+        id int NOT NULL,
+        nome varchar(255) NOT NULL,
+        cidade varchar(255) NOT NULL,
+        fundacao DATE NOT NULL,
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE livros(
+        id int NOT NULL,
+        titulo varchar(255) NOT NULL,
+        autor_id int NOT NULL,
+        editora_id int NOT NULL,
+        ano DATE NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (autor_id) REFERENCES autores(id),
+        FOREIGN KEY (editora_id) REFERENCES editoras(id)
+    );
+
+    CREATE TABLE usuarios(
+        id int NOT NULL,
+        primeiro_nome varchar(255) NOT NULL,
+        ultimo_nome varchar(255) NOT NULL,
+        nacionalidade varchar(255) NOT NULL,
+        data_nascimento DATE NOT NULL,
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE usuarios_livros(
+        usuario_id int NOT NULL,
+        livro_id int NOT NULL,
+        FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+        FOREIGN KEY (livro_id) REFERENCES livros(id)
+    );
+
+2) Tabelas com dados inseridos.
+
+3)
+    1)  SELECT autores.primeiro_nome, livros.titulo FROM autores
+        JOIN livros ON autores.id = livros.autor_id
+        WHERE autores.primeiro_nome = "Bill";
+
+    2)  SELECT autores.primeiro_nome, autores.ultimo_nome, livros.titulo
+        FROM autores
+        JOIN livros
+        ON autores.id = livros.autor_id
+        WHERE autores.primeiro_nome LIKE "A%";
+
+    3)  SELECT count(*), autores.primeiro_nome FROM autores
+        JOIN livros ON autores.id = livros.autor_id
+        GROUP BY livros.autor_id;
+
+    4)  SELECT COUNT(*), livros.titulo FROM livros
+        JOIN usuarios_livros ON usuarios_livros.livro_id = livros.id
+        GROUP BY usuarios_livros.livro_id
+        ORDER BY count(*) DESC
+        LIMIT 1;
+
+    5)  SELECT COUNT(*), usuarios.primeiro_nome FROM usuarios
+        JOIN usuarios_livros ON usuarios_livros.usuario_id = usuarios.id
+        GROUP BY usuarios.id;
+
+    6)  SELECT livros.titulo, editoras.nome, editoras.fundacao from editoras
+        JOIN livros ON livros.editora_id = editoras.id
+        WHERE editoras.fundacao < "1990-01-01";
+
+    7)  SELECT usuarios.primeiro_nome, livros.titulo from usuarios_livros
+        JOIN usuarios ON usuarios.id = usuarios_livros.usuario_id
+        JOIN livros ON livros.id = usuarios_livros.livro_id
+        WHERE livros.id = 2
+        ORDER BY usuarios.data_nascimento ASC
+        LIMIT 1;
+
+    8)  SELECT usuarios.nacionalidade, count(*) from usuarios
+        JOIN usuarios_livros ON usuarios_livros.usuario_id = usuarios.id
+        GROUP BY usuarios.nacionalidade
+        ORDER BY count(*) DESC
+        LIMIT 1;
+
+    9)  SELECT count(*), editoras.nome from editoras
+        JOIN livros ON livros.editora_id = editoras.id
+        JOIN usuarios_livros ON usuarios_livros.livro_id = livros.id
+        JOIN usuarios ON usuarios.id = usuarios_livros.usuario_id
+        WHERE datediff(curdate(), usuarios.data_nascimento)/365 > 20
+        GROUP BY editoras.nome
+        ORDER BY count(*) DESC
+        LIMIT 2;
+
+    10) SELECT livros.titulo from livros
+        JOIN usuarios_livros ON usuarios_livros.livro_id = livros.id
+        JOIN usuarios ON usuarios_livros.usuario_id = usuarios.id
+        WHERE usuarios.data_nascimento > livros.ano;
