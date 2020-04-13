@@ -5,10 +5,11 @@ import { AddressInfo } from 'net';
 import express from 'express';
 import cors from 'cors';
 
-const app = express();
-app.use(cors({ origin: true }), express.json());
+const app = express ();
 
-exports.app = functions.https.onRequest(app);
+app.use ( cors ( { origin: true } ), express.json () );
+
+exports.app = functions.https.onRequest ( app );
 
 const firebaseConfig = {
   apiKey: process.env.API_KEY,
@@ -21,14 +22,17 @@ const firebaseConfig = {
   measurementId: process.env.MEASUREMENT_ID,
 };
 
-firebaseAdmin.initializeApp(functions.config().firebase);
-firebase.initializeApp(firebaseConfig);
+firebaseAdmin.initializeApp ( functions.config ().firebase );
+firebase.initializeApp ( firebaseConfig );
 
-const server = app.listen(process.env.PORT || 3000, () => {
-  if (server) {
-    const address = server.address() as AddressInfo;
-    console.log(`Server is running in http://localhost:${address.port}`);
+
+const server = app.listen ( process.env.PORT || 3000, () => {
+  if ( server ) {
+    const address = server.address () as AddressInfo;
+    // tslint:disable-next-line: no-console
+    console.log ( `Server is running in http://localhost:${address.port}` );
   } else {
-    console.error('Failure upon starting server.');
+    // tslint:disable-next-line: no-console
+    console.error ( 'Failure upon starting server.' );
   }
-});
+} );
