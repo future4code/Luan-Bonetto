@@ -43,9 +43,8 @@
       }
     ],
     "ter-computed-property-spacing": [true, "always"],
-    "ter-func-call-spacing": [true, "always"],
+    "ter-func-call-spacing": ["error", "always"],
     "ter-indent": [true, 2],
-    "ter-max-len": [true, 100],
     "ter-newline-after-var": [true, "always"],
     "ter-no-mixed-spaces-and-tabs": { "type": "spaces" },
     "object-curly-spacing": [true, "always"],
