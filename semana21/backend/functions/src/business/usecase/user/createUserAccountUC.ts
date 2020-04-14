@@ -1,11 +1,21 @@
 import { UserDB } from "../../../data/userDB";
+import { User } from "../../entities/user";
 
 export class CreateUserAccountUC {
   constructor( private db:UserDB ){}
 
   public async execute( input:CreateUserAccountInput ): Promise<CreateUserAccountOutput>{
     try{
-      const userToken = await this.db.createUserAccount( input.email, input.password )
+
+      const newUser = new User(
+        input.name,
+        input.email,
+        input.password,
+        input.dateOfBirth,
+        input.photo
+      )
+
+      const userToken = await this.db.createUserAccount( newUser )
 
       return ( {
         message: "User successfully registered!",
@@ -21,8 +31,11 @@ export class CreateUserAccountUC {
 }
 
 interface CreateUserAccountInput{
+  name: string,
   email: string,
-  password: string
+  password: string,
+  dateOfBirth: number,
+  photo: string
 }
 
 interface CreateUserAccountOutput{
