@@ -27,5 +27,5 @@ interface CreateUserAccountInput{
 
 interface CreateUserAccountOutput{
   message: string,
-  token?: string
+  token: string
 }
