@@ -7,7 +7,7 @@ export class UserDB extends BaseDB implements UserGateway {
 
   private userCollection = "users"
 
-  public async createUserAccount( user:User ): Promise< string > {
+  public async createUserAccount( user:User ): Promise<string> {
 
     try{
       const result = await this.dbFirebase.auth().createUserWithEmailAndPassword( user.getEmail(), user.getPassword() )
@@ -30,6 +30,25 @@ export class UserDB extends BaseDB implements UserGateway {
     }catch( err ){
       throw new BadRequestError( err.message )
     }
+
   }
 
+  public async login( email:string, password:string ): Promise<string> {
+
+    try{
+      const result = await this.dbFirebase.auth().signInWithEmailAndPassword( email, password )
+
+      const userToken = result.user?.getIdToken()
+
+      if( !userToken ){
+        throw new BadRequestError( "The token could not be generated" )
+      }
+
+      return userToken
+
+    }catch( err ){
+      throw new BadRequestError( err.message )
+    }
+
+  }
 }
