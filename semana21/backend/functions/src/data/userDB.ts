@@ -18,12 +18,21 @@ export class UserDB extends BaseDB implements UserGateway {
         throw new BadRequestError( "The token could not be generated" )
       }
 
-      await this.dbFirestore.collection( this.userCollection ).doc().set( {
+      const newId = this.dbFirebase.auth().currentUser?.uid
+
+      if( !newId ){
+        throw new BadRequestError( "The token could not be generated" )
+      }
+
+      await this.dbFirestore.collection( this.userCollection ).doc( newId ).set( {
         name: user.getName(),
         email: user.getEmail(),
         dateOfBirth: user.getDateOfBirth(),
         photo: user.getPhoto()
       } )
+
+      this.dbFirebase.auth().currentUser?.sendEmailVerification()
+
 
       return userToken
 
@@ -51,4 +60,21 @@ export class UserDB extends BaseDB implements UserGateway {
     }
 
   }
+
+  public async changePassword( token:string, newPassword:string ): Promise<boolean>{
+
+    try{
+      const checkRevoked = true
+
+      await this.dbFirebaseAdmin.auth().verifyIdToken( token, checkRevoked )
+      await this.dbFirebase.auth().currentUser?.updatePassword( newPassword )
+
+      return true
+
+    }catch( err ){
+      throw new BadRequestError( err.message )
+    }
+
+  }
+
 }
