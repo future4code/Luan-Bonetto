@@ -1,8 +1,8 @@
-import { UserDB } from "../../../data/userDB";
 import { BadRequestError } from "../../errors/badRequestError";
+import { UserGateway } from "../../gateways/userGateway";
 
 export class ChangePasswordUC{
-  constructor( private db:UserDB ){}
+  constructor( private db:UserGateway ){}
 
   public async execute( input: ChangePasswordInput ): Promise<ChangePasswordOutput>{
     try{

@@ -1,9 +1,9 @@
-import { UserDB } from "../../../data/userDB";
 import { User } from "../../entities/user";
 import { BadRequestError } from "../../errors/badRequestError";
+import { UserGateway } from "../../gateways/userGateway";
 
 export class CreateUserAccountUC {
-  constructor( private db:UserDB ){}
+  constructor( private db:UserGateway ){}
 
   public async execute( input:CreateUserAccountInput ): Promise<CreateUserAccountOutput>{
     try{

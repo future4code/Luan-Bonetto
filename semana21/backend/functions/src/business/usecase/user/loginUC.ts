@@ -1,7 +1,7 @@
-import { UserDB } from "../../../data/userDB";
+import { UserGateway } from "../../gateways/userGateway"
 
 export class LoginUC {
-  constructor( private db:UserDB ){}
+  constructor( private db:UserGateway ){}
 
   public async execute( input:LoginInput ): Promise<LoginOutput>{
 

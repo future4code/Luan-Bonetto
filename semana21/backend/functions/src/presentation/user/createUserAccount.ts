@@ -5,7 +5,7 @@ import { UserDB } from '../../data/userDB';
 export const createUserAccountEndpoint = async( req: Request, res: Response ) => {
   try {
     const createUserAccountUC = new CreateUserAccountUC( new UserDB() )
-    const result = await createUserAccountUC.execute( {
+    const response = await createUserAccountUC.execute( {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
@@ -13,7 +13,7 @@ export const createUserAccountEndpoint = async( req: Request, res: Response ) =>
       photo: req.body.photo
     } )
 
-    res.status( 200 ).send( result )
+    res.status( 200 ).send( response )
   }catch( err ){
     res.status( err.errorCode || 400 ).send( {
       message: err.message
