@@ -1,4 +1,5 @@
 import { VideoGatweay } from "../../gateways/videoGateway";
+import { Video } from "../../entities/video";
 
 export class GetVideosByUserIdUC{
   constructor( private db:VideoGatweay ){}
@@ -24,5 +25,5 @@ interface GetVideosByUserIdInput{
 }
 
 interface GetVideosByUserIdOutput{
-  videos: any
+  videos: Video[]
 }

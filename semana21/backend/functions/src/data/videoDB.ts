@@ -14,7 +14,7 @@ export class VideoDB extends BaseDB implements VideoGatweay{
       const userId = verifiedToken.uid
 
       await this.dbFirestore.collection( this.videoCollection ).doc().set( {
-        titulo: video.getTitle(),
+        title: video.getTitle(),
         description: video.getDescription(),
         url: video.getUrl(),
         userId
@@ -25,18 +25,39 @@ export class VideoDB extends BaseDB implements VideoGatweay{
 
   }
 
-  public async getVideosByUserId( userToken:string ): Promise<any>{
+  public async getVideosByUserId( userToken:string ): Promise<Video[]>{
 
     try{
 
       const verifiedToken = await this.dbFirebaseAdmin.auth().verifyIdToken( userToken )
       const userId = verifiedToken.uid
 
-      const result = await this.dbFirestore.collection( this.videoCollection ).where( "userId", "==", userId )
+      const result = await this.dbFirestore.collection( this.videoCollection )
+      .where( "userId", "==", userId )
       .get()
 
       return result.docs.map( ( doc ) => {
-        return doc.data()
+        let video = new Video(
+          doc.data().url,
+          doc.data().description,
+          doc.data().titulo,
+          doc.id
+        )
+
+        return video
+      } )
+    }catch( err ){
+      throw new BadRequestError( err.message )
+    }
+
+  }
+
+  public async updateVideoById( videoId:string, titulo:string, description:string ): Promise<void>{
+
+    try{
+      await this.dbFirestore.collection( this.videoCollection ).doc( videoId ).update( {
+        titulo,
+        description
       } )
 
     }catch( err ){

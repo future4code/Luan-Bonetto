@@ -5,6 +5,7 @@ import { loginEndpoint } from './user/login';
 import { changePasswordEndpoint } from './user/changePassword';
 import { insertNewVideoEndpoint } from './video/insertNewVideo';
 import { getVideosByUserIdEndpoint } from './video/getVideosByUserId';
+import { updateVideoByIdEndpoint } from './video/updateVideoById';
 
 const app = express();
 
@@ -15,5 +16,6 @@ app.post( '/user/login', loginEndpoint )
 app.put( '/user/password', changePasswordEndpoint )
 app.post( '/video/insert', insertNewVideoEndpoint )
 app.get( '/videos/user/:userToken', getVideosByUserIdEndpoint )
+app.put( '/video/update/:videoId', updateVideoByIdEndpoint )
 
 export default app

@@ -2,7 +2,8 @@ export class Video {
   constructor(
     private url: string,
     private description: string,
-    private title: string
+    private title: string,
+    private id?: string
   ){}
 
   public getUrl(): string {
@@ -17,4 +18,7 @@ export class Video {
     return this.title
   }
 
+  public getId(): string | undefined {
+    return this.id
+  }
 }
