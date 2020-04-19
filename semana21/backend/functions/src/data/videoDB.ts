@@ -22,6 +22,27 @@ export class VideoDB extends BaseDB implements VideoGatweay{
     }catch( err ){
       throw new BadRequestError( err.message )
     }
+
+  }
+
+  public async getVideosByUserId( userToken:string ): Promise<any>{
+
+    try{
+
+      const verifiedToken = await this.dbFirebaseAdmin.auth().verifyIdToken( userToken )
+      const userId = verifiedToken.uid
+
+      const result = await this.dbFirestore.collection( this.videoCollection ).where( "userId", "==", userId )
+      .get()
+
+      return result.docs.map( ( doc ) => {
+        return doc.data()
+      } )
+
+    }catch( err ){
+      throw new BadRequestError( err.message )
+    }
+
   }
 
 }
