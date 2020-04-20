@@ -40,7 +40,7 @@ export class VideoDB extends BaseDB implements VideoGatweay{
         let video = new Video(
           doc.data().url,
           doc.data().description,
-          doc.data().titulo,
+          doc.data().title,
           doc.id
         )
 
@@ -52,14 +52,24 @@ export class VideoDB extends BaseDB implements VideoGatweay{
 
   }
 
-  public async updateVideoById( videoId:string, titulo:string, description:string ): Promise<void>{
+  public async updateVideoById( videoId:string, title:string, description:string ): Promise<void>{
 
     try{
       await this.dbFirestore.collection( this.videoCollection ).doc( videoId ).update( {
-        titulo,
+        title,
         description
       } )
 
+    }catch( err ){
+      throw new BadRequestError( err.message )
+    }
+
+  }
+
+  public async deleteVideoById( videoId:string ): Promise<void>{
+
+    try{
+      await this.dbFirestore.collection( this.videoCollection ).doc( videoId ).delete()
     }catch( err ){
       throw new BadRequestError( err.message )
     }

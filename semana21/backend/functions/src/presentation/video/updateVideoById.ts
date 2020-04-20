@@ -7,7 +7,7 @@ export const updateVideoByIdEndpoint = async ( req: Request, res: Response ) => 
     const updateVideoByIdUC = new UpdateVideoByIdUC( new VideoDB() )
     const response = updateVideoByIdUC.execute( {
       videoId: req.params.videoId,
-      titulo: req.body.titulo,
+      title: req.body.title,
       description: req.body.description
     } )
 

@@ -7,7 +7,7 @@ export class UpdateVideoByIdUC{
     try{
       await this.db.updateVideoById(
         input.videoId,
-        input.titulo,
+        input.title,
         input.description
       )
 
@@ -25,7 +25,7 @@ export class UpdateVideoByIdUC{
 
 interface UpdateVideoByIdInput{
   videoId: string
-  titulo: string
+  title: string
   description: string
 }
 
