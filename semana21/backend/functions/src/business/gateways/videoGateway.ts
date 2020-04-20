@@ -6,4 +6,5 @@ export interface VideoGatweay{
   updateVideoById( videoId:string, titulo:string, description:string ): Promise<void>
   deleteVideoById( videoId:string ): Promise<void>
   getVideoInfoById( videoId:string ): Promise<object>
+  getAllVideos(): Promise<Video[]>
 }

@@ -6,7 +6,7 @@ export const getVideosByUserIdEndpoint = async ( req: Request, res: Response ) =
   try{
     const getVideosByUserIdUC = new GetVideosByUserIdUC( new VideoDB() )
     const response = await getVideosByUserIdUC.execute( {
-      userToken: req.params.userToken
+      userToken: req.headers.auth as string
     } )
 
     res.status( 200 ).send( response )

@@ -99,4 +99,19 @@ export class VideoDB extends BaseDB implements VideoGatweay{
     }
 
   }
+
+  public async getAllVideos(): Promise<Video[]>{
+    const result = await this.dbFirestore.collection( this.videoCollection ).get()
+
+    return result.docs.map( ( doc ) => {
+      let video = new Video(
+        doc.data().url,
+        doc.data().description,
+        doc.data().title,
+        doc.id
+      )
+
+      return video
+    } )
+  }
 }
