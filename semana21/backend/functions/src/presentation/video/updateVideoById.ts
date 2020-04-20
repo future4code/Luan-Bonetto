@@ -5,7 +5,7 @@ import { VideoDB } from '../../data/videoDB';
 export const updateVideoByIdEndpoint = async ( req: Request, res: Response ) => {
   try{
     const updateVideoByIdUC = new UpdateVideoByIdUC( new VideoDB() )
-    const response = updateVideoByIdUC.execute( {
+    const response = await updateVideoByIdUC.execute( {
       videoId: req.params.videoId,
       title: req.body.title,
       description: req.body.description

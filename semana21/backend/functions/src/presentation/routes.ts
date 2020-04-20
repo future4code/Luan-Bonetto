@@ -7,6 +7,7 @@ import { insertNewVideoEndpoint } from './video/insertNewVideo';
 import { getVideosByUserIdEndpoint } from './video/getVideosByUserId';
 import { updateVideoByIdEndpoint } from './video/updateVideoById';
 import { deleteVideoByIdEndpoint } from './video/deleteVideoById';
+import { getVideoInfoByIdEndpoint } from './video/getVideoInfoById';
 
 
 const app = express();
@@ -20,5 +21,6 @@ app.post( '/video/insert', insertNewVideoEndpoint )
 app.get( '/videos/user/:userToken', getVideosByUserIdEndpoint )
 app.put( '/video/update/:videoId', updateVideoByIdEndpoint )
 app.delete( '/video/delete/:videoId', deleteVideoByIdEndpoint )
+app.get( '/video/info/:videoId', getVideoInfoByIdEndpoint )
 
 export default app

@@ -5,6 +5,7 @@ import { BadRequestError } from "../business/errors/badRequestError";
 
 export class VideoDB extends BaseDB implements VideoGatweay{
   private videoCollection = "videos"
+  private userCollection = "users"
 
   public async insertNewVideo( video:Video, userToken:string ): Promise<void>{
 
@@ -76,4 +77,26 @@ export class VideoDB extends BaseDB implements VideoGatweay{
 
   }
 
+  public async getVideoInfoById( videoId:string ): Promise<object>{
+
+    try{
+      const result = await this.dbFirestore.collection( this.videoCollection ).doc( videoId ).get()
+
+      const userId = result.data()?.userId
+      const user = await this.dbFirestore.collection( this.userCollection ).doc( userId ).get()
+
+      const videoInfo = {
+        title: result.data()?.title,
+        description: result.data()?.description,
+        url: result.data()?.url,
+        userName: user.data()?.name,
+        userPhoto: user.data()?.photo
+      }
+
+      return videoInfo
+    }catch( err ){
+      throw new BadRequestError( err.message )
+    }
+
+  }
 }
