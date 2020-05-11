@@ -1,0 +1,58 @@
+{
+  "extends": [
+    "tslint-eslint-rules"
+  ],
+  "rules": {
+    "no-constant-condition": true,
+    "no-control-regex": true,
+    "no-duplicate-case": true,
+    "no-empty-character-class": true,
+    "no-ex-assign": true,
+    "no-extra-boolean-cast": true,
+    "no-extra-semi": true,
+    "no-inner-declarations": [
+      true,
+      "functions"
+    ],
+    "no-invalid-regexp": true,
+    "ter-no-irregular-whitespace": [true],
+    "no-regex-spaces": true,
+    "ter-no-sparse-arrays": [true],
+    "no-unexpected-multiline": true,
+    "valid-typeof": true,
+    "no-multi-spaces": [
+      true,
+      {
+        "exceptions": { "PropertyAssignment": false, "OtherException": "true|false" }
+      }
+    ],
+    "ter-no-proto": true,
+    "ter-no-script-url": true,
+    "ter-no-self-compare": true,
+    "handle-callback-err": [true, "error"],
+    "array-bracket-spacing": [true, "always"],
+    "block-spacing": [
+      true,
+      "always"
+    ],
+    "brace-style": [
+      true,
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "ter-computed-property-spacing": [true, "always"],
+    "ter-func-call-spacing": ["error", "always"],
+    "ter-indent": [true, 2],
+    "ter-newline-after-var": [true, "always"],
+    "ter-no-mixed-spaces-and-tabs": { "type": "spaces" },
+    "object-curly-spacing": [true, "always"],
+    "space-in-parens": [true, "always"],
+    "ter-no-tabs": true,
+    "ter-arrow-body-style": [true, "always"],
+    "ter-arrow-parens": [true, "always"],
+    "ter-arrow-spacing": [true],
+    "ter-prefer-arrow-callback": [true]
+  }
+}
